@@ -1,0 +1,6 @@
+__pycache__/
+.pytest_cache/
+count.txt
+logs.txt
+.env
+test.ipynb
