@@ -9,7 +9,7 @@ def count_startup() -> None:
     if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
         # Read the last line's number and add one to it
         with open(file_path, 'r') as file:
-            first_line = file.readline().strip()
+            first_line = file.readline(5_000_000).strip()
             last_number = int(first_line)
             new_number = last_number + 1
 
