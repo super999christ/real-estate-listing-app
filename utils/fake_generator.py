@@ -1,10 +1,10 @@
-import random
 from datetime import datetime
 
 from faker import Faker
 
 from crud.user import bulk_insert_users
 from authentication.password_handler import hash_password
+import secrets
 
 
 async def generate_fake_users(n: int = 3) -> dict[str, str]:
@@ -19,7 +19,7 @@ async def generate_fake_users(n: int = 3) -> dict[str, str]:
             'email': fake.email(),
             'password': hash_password(fake.password()),  # hashing the passwords take so long!
             'date_of_birth': fake.date_between_dates(date_start=datetime(1941,1,1), date_end=datetime(2000,12,31)),
-            'gender': random.choice(['MALE', 'FEMALE', 'NOT_SPECIFIED']),
+            'gender': secrets.choice(['MALE', 'FEMALE', 'NOT_SPECIFIED']),
             'created_at': datetime.utcnow(),
             'updated_at': datetime.utcnow(),
         }
